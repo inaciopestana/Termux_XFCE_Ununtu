@@ -2,36 +2,36 @@
 
 cat <<'EOF' > $PREFIX/bin/prun
 #!/bin/bash
-varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/*)
-pd login debian --user $varname --shared-tmp -- env DISPLAY=:1.0 $@
+varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:1.0 $@
 
 EOF
 chmod +x $PREFIX/bin/prun
 
 cat <<'EOF' > $PREFIX/bin/zrun
 #!/bin/bash
-varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/*)
-pd login debian --user $varname --shared-tmp -- env DISPLAY=:1.0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform $@
+varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:1.0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform $@
 
 EOF
 chmod +x $PREFIX/bin/zrun
 
 cat <<'EOF' > $PREFIX/bin/zrunhud
 #!/bin/bash
-varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/*)
-pd login debian --user $varname --shared-tmp -- env DISPLAY=:1.0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform GALLIUM_HUD=fps $@
+varname=$(basename $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/*)
+pd login ubuntu --user $varname --shared-tmp -- env DISPLAY=:1.0 MESA_LOADER_DRIVER_OVERRIDE=zink TU_DEBUG=noconform GALLIUM_HUD=fps $@
 
 EOF
 chmod +x $PREFIX/bin/zrunhud
 
-#cp2menu utility ... Allows copying of Debian proot desktop menu items into Termux xfce menu to allow for launching programs from Debian proot from within the xfce menu rather than launching from terminal. 
+#cp2menu utility ... Allows copying of ubuntu proot desktop menu items into Termux xfce menu to allow for launching programs from ubuntu proot from within the xfce menu rather than launching from terminal. 
 
 cat <<'EOF' > $PREFIX/bin/cp2menu
 #!/bin/bash
 
 cd
 
-user_dir="$PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/"
+user_dir="$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/"
 
 # Get the username from the user directory
 username=$(basename "$user_dir"/*)
@@ -44,7 +44,7 @@ if [[ -z $action ]]; then
 fi
 
 if [[ $action == "Copy .desktop file" ]]; then
-  selected_file=$(zenity --file-selection --title="Select .desktop File" --file-filter="*.desktop" --filename="$PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications")
+  selected_file=$(zenity --file-selection --title="Select .desktop File" --file-filter="*.desktop" --filename="$PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/usr/share/applications")
 
   if [[ -z $selected_file ]]; then
     zenity --info --text="No file selected. Quitting..." --title="Operation Cancelled"
@@ -54,7 +54,7 @@ if [[ $action == "Copy .desktop file" ]]; then
   desktop_filename=$(basename "$selected_file")
 
   cp "$selected_file" "$PREFIX/share/applications/"
-  sed -i "s/^Exec=\(.*\)$/Exec=pd login debian --user $username --shared-tmp -- env DISPLAY=:1.0 \1/" "$PREFIX/share/applications/$desktop_filename"
+  sed -i "s/^Exec=\(.*\)$/Exec=pd login ubuntu --user $username --shared-tmp -- env DISPLAY=:1.0 \1/" "$PREFIX/share/applications/$desktop_filename"
 
   zenity --info --text="Operation completed successfully!" --title="Success"
 elif [[ $action == "Remove .desktop file" ]]; then
@@ -89,7 +89,7 @@ StartupNotify=false
 " > $PREFIX/share/applications/cp2menu.desktop 
 chmod +x $PREFIX/share/applications/cp2menu.desktop 
 
-#App Installer Utility .. For installing additional applications not available in Termux or Debian proot repositories. 
+#App Installer Utility .. For installing additional applications not available in Termux or ubuntu proot repositories. 
 cat <<'EOF' > "$PREFIX/bin/app-installer"
 #!/bin/bash
 
