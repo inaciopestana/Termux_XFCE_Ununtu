@@ -18,7 +18,7 @@ trap finish EXIT
 clear
 
 echo ""
-echo "This script will install XFCE Desktop in Termux along with a Debian proot"
+echo "This script will install XFCE Desktop in Termux along with a ubuntu proot"
 echo ""
 read -r -p "Please enter username for proot installation: " username </dev/tty
 
