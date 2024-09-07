@@ -1,3 +1,6 @@
+#####Trying to edit this code to use Ubuntu instead of debian as a base system##########
+
+
 # Termux_XFCE
 
 Sets up a termux XFCE desktop and a Debian proot install. This setup uses Termux-X11, the termux-x11 server will be installed and you will be prompted to allow termux to install the Android APK.
@@ -11,7 +14,7 @@ Please read the whole Readme for more information about this setup.
 To install run this command in termux
 
 ```
-curl -sL https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+curl -sL https://raw.githubusercontent.com/inaciopestana/Termux_XFCE_Ununtu/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 ```
 &nbsp;
 
