@@ -57,11 +57,11 @@ if [ ! -d "$HOME/.config/autostart" ]; then
 fi
 
 #Conky
-cp $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/conky.desktop $HOME/.config/autostart/
+cp $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/usr/share/applications/conky.desktop $HOME/.config/autostart/
 sed -i 's|^Exec=.*$|Exec=prun conky -c .config/conky/Alterf/Alterf.conf|' $HOME/.config/autostart/conky.desktop
 
 #Flameshot
-cp $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/org.flameshot.Flameshot.desktop $HOME/.config/autostart/
+cp $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/usr/share/applications/org.flameshot.Flameshot.desktop $HOME/.config/autostart/
 sed -i 's|^Exec=.*$|Exec=prun flameshot|' $HOME/.config/autostart/org.flameshot.Flameshot.desktop
 
 chmod +x $HOME/.config/autostart/*.desktop
@@ -70,23 +70,23 @@ chmod +x $HOME/.config/autostart/*.desktop
 
 #Proot Theming
 #Setup Fancybash Proot
-cp .fancybash.sh $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username
-echo "source ~/.fancybash.sh" >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
-sed -i '327s/termux/proot/' $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fancybash.sh
+cp .fancybash.sh $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username
+echo "source ~/.fancybash.sh" >> $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.bashrc
+sed -i '327s/termux/proot/' $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.fancybash.sh
 
 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/conky.tar.gz
 tar -xvzf conky.tar.gz
 rm conky.tar.gz
-mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config
-mv .config/conky/ $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config
-mv .config/neofetch $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config
+mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.config
+mv .config/conky/ $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.config
+mv .config/neofetch $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.config
 
 #Set theming from xfce to proot
-cp -r $PREFIX/share/icons/dist-dark $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/icons/dist-dark
+cp -r $PREFIX/share/icons/dist-dark $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/usr/share/icons/dist-dark
 
-cat <<'EOF' > $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.Xresources
+cat <<'EOF' > $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.Xresources
 Xcursor.theme: dist-dark
 EOF
 
-mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fonts/
-cp .fonts/NotoColorEmoji-Regular.ttf $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fonts/ 
+mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.fonts/
+cp .fonts/NotoColorEmoji-Regular.ttf $PREFIX/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.fonts/ 
