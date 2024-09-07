@@ -47,9 +47,9 @@ mkdir -p Desktop
 mkdir -p Downloads
 
 #Download required install scripts
-wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/xfce.sh
-wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/proot.sh
-wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/utils.sh
+wget https://github.com/inaciopestana/Termux_XFCE_Ununtu/raw/main/xfce.sh
+wget https://github.com/inaciopestana/Termux_XFCE_Ununtu/raw/main/proot.sh
+wget https://github.com/inaciopestana/Termux_XFCE_Ununtu/raw/main/utils.sh
 chmod +x *.sh
 
 ./xfce.sh "$username"
