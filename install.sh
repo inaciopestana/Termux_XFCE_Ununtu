@@ -1,7 +1,3 @@
-cat > "$HOME/install-mobox-termux.sh" <<'EOF'
-#!/data/data/com.termux/files/usr/bin/bash
-set -e
-
 echo
 echo "============================================================"
 echo "       INSTALAÇÃO AUTOMÁTICA MOBOX + TERMUX + XFCE"
@@ -460,9 +456,3 @@ echo " ATENÇÃO: O aplicativo Termux:X11 precisa estar instalado"
 echo " no Android para os comandos gráficos funcionarem."
 echo "============================================================"
 echo
-
-EOF
-
-chmod +x "$HOME/install-mobox-termux.sh"
-
-bash "$HOME/install-mobox-termux.sh"
