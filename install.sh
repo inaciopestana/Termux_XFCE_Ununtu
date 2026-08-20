@@ -137,6 +137,13 @@ while IFS= read -r mirror; do
 
     fi
 
+done <<EOF
+$MIRRORS
+EOF
+
+echo
+echo "===== RANKING ====="
+
 echo
 echo "===== RANKING ====="
 
