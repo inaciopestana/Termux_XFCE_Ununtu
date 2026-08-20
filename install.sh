@@ -339,6 +339,24 @@ echo "Teste:"
 command -v wine
 
 # ============================================================
+# 10. Teclado
+# ============================================================
+
+pkg install xorg-setxkbmap
+
+mkdir -p ~/.config/autostart && cat > ~/.config/autostart/abnt2.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Teclado ABNT2
+Comment=Configura o teclado brasileiro ABNT2
+Exec=sh -c 'sleep 2; setxkbmap -I "$PREFIX/share/xkeyboard-config-2" -rules evdev -model abnt2 -layout br'
+Terminal=false
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
+EOF
+
+
+# ============================================================
 # 10. VERIFICAÇÃO
 # ============================================================
 
