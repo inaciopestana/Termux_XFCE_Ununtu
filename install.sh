@@ -291,6 +291,54 @@ echo
 
 
 # ============================================================
+# 9. INSTALAÇÃO DO MOBOX RUN / WINE
+# ============================================================
+
+echo
+echo "============================================================"
+echo " INSTALANDO MOBOX RUN / WINE"
+echo "============================================================"
+echo
+
+MOBOX_RUN_URL="https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/termux_native/mobox_run.sh"
+MOBOX_DESKTOP_URL="https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/termux_native/MoboxExplorer.desktop"
+
+echo "[1/4] Baixando mobox_run.sh..."
+wget -O "$HOME/mobox_run.sh" "$MOBOX_RUN_URL"
+
+echo
+echo "[2/4] Tornando mobox_run.sh executável..."
+chmod +x "$HOME/mobox_run.sh"
+
+echo
+echo "[3/4] Instalando atalho do Mobox no Desktop..."
+mkdir -p "$HOME/Desktop"
+wget -O "$HOME/Desktop/MoboxExplorer.desktop" "$MOBOX_DESKTOP_URL"
+
+echo
+echo "[4/4] Criando comando wine..."
+rm -f "$PREFIX/bin/wine"
+ln -s "$HOME/mobox_run.sh" "$PREFIX/bin/wine"
+
+echo
+echo "===== MOBOX RUN CONFIGURADO ====="
+echo
+echo "mobox_run.sh:"
+ls -l "$HOME/mobox_run.sh"
+
+echo
+echo "Atalho:"
+ls -l "$HOME/Desktop/MoboxExplorer.desktop"
+
+echo
+echo "Comando wine:"
+ls -l "$PREFIX/bin/wine"
+
+echo
+echo "Teste:"
+command -v wine
+
+# ============================================================
 # 10. VERIFICAÇÃO
 # ============================================================
 
