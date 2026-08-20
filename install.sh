@@ -86,6 +86,7 @@ pkg install -y \
     proot-distro \
     curl \
     wget \
+    mousepad \
     tar
 
 # ============================================================
